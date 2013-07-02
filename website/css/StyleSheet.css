@@ -1,0 +1,23 @@
+﻿body
+{
+    background:#FFF;color:#000;font-family:Arial;font-size:80%;text-align:center;
+}
+
+h1
+{
+    font-family:Arial; font-size:130%
+}
+
+h2
+{
+   font-family:Arial; font-size:100% 
+}
+
+section {
+	display: block;
+	border-radius: 15px;
+	background-color:Azure;
+	width:auto;
+	margin:1em
+	
+}
