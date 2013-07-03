@@ -3,8 +3,9 @@
 <head>
     <title>Under my keel</title>
     <link rel="stylesheet" href="css/StyleSheet.css" type="text/css" />
+    <script type="text/javascript" src="js/jquery-2.0.2.min.js"></script>
+    <script type="text/javascript" src="js/display.js"></script>
 </head>
-
 <body>
 <section id="tide_selection">
     <section id="hightide">
@@ -24,7 +25,7 @@
 <section id="one_point">
     <input type="checkbox" id="fromgroundzero"/>
     <label>Compute from ground zero</label>
-    <section id="from_groundzero">
+    <section id="from_groundzero" style="display:none;">
         <h2>Tidal coefficient</h2>
         <input type="number" id="tidal_coefficient" />
         <h2>Zero on map</h2>
@@ -37,9 +38,10 @@
         <input type="number" id="onepoint_value"/>
         <label>m.</label>
     </section>
+</section>
 <input type="button" id="compute" value="Get curve"/>
 </body>
+</html>
 <footer>
   <p>(c) TODO:</p>
 </footer>
-</html>
