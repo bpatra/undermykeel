@@ -1,4 +1,4 @@
-﻿var descendant = true
+﻿var isDescendant = true;
 $(document).ready(function () {
     $('#fromgroundzero').click(function () {
         $("section#from_groundzero").toggle('slow');
@@ -9,16 +9,44 @@ $(document).ready(function () {
         var elt1 = $("section#tide_selection").children().eq(0);
         var elt2 = $("section#tide_selection").children().eq(1);
         elt2.insertBefore(elt1);
-        descendant = !descendant;
+        isDescendant != isDescendant;
     });
 
     $("#compute").click(function () {
+        $("#input").toggle('slow');
+        $("#chart").empty();
         ComputeGraph();
+        $("#graph").toggle('slow');
+    });
+
+    $("#back").click(function () {
+        $("#input").toggle('slow');
+        $("#graph").toggle('slow');
     });
 });
 
-function ComputeGraph () {
-    var data = [{ x: 1910, y: 92228531 }, { x: 1920, y: 106021568 }, { x: 1930, y: 123202660 }, { x: 1940, y: 132165129 }, { x: 1950, y: 151325798 }, { x: 1960, y: 179323175 }, { x: 1970, y: 203211926 }, { x: 1980, y: 226545805 }, { x: 1990, y: 248709873 }, { x: 2000, y: 281421906 }, { x: 2010, y: 308745538}];
+function ComputeGraph() {
+    var isFromGroundZero = $("#fromgroundzero").is(':checked')
+    if (isFromGroundZero) {
+        alert("feature not ready yet");
+    }
+    var lowTideTime = timeToFloat($("#lowtide_time").val());
+    var highTideTime = timeToFloat($("#hightide_time").val());
+    var lowTideValue = $("#lowtide_value").val();
+    var highTideValue = $("#hightide_value").val();
+    var localPointTime = timeToFloat($("#onepoint_time").val());
+    var localPointValue = $("#onepoint_value").val();
+
+    //TODO add validation.
+
+    var D = Math.abs(highTideTime - lowTideTime);
+    var M = highTideValue - lowTideValue;
+    var data = [];
+    var start  = isDescendant ? highTideTime : lowTideTime;
+    for (var i = 0; i < 1000; i++) {
+        var t1 = i * D / 1000;
+        data.push({ x: start + t1, y: hFromt(D, M, t1) });
+    }
 
     var graph = new Rickshaw.Graph({
         element: document.querySelector("#chart"),
@@ -32,4 +60,17 @@ function ComputeGraph () {
 
     graph.render();
 
+}
+
+function hFromt(D, M, t){
+    var y = Math.sin(Math.PI*t/(2*D));
+    return M*y*y;
+}
+
+function timeToFloat(timeString) {
+    var splitted = timeString.split(':');
+    var hours = parseFloat(splitted[0]);
+    var minutes = parseFloat(splitted[1]);
+
+    return hours + minutes / 60.0;
 }
