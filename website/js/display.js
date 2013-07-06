@@ -65,12 +65,14 @@ function ComputeGraph() {
         yFormatter: function (y) { return y.toFixed(2) + " m" }
     });
 
-    var axes = new Rickshaw.Graph.Axis.Time({
-        graph: graph
+    var axes = new Rickshaw.Graph.Axis.X({
+        graph: graph,
+        tickFormat: floatToTime
     });
 
     var axes = new Rickshaw.Graph.Axis.Y({
-        graph: graph
+        graph: graph,
+        tickFormat: Rickshaw.Fixtures.Number.formatKMBT
     });
 
     graph.render();
@@ -98,7 +100,7 @@ function hFromt(D, M, t, isEbb){
 }
 
 function floatToTime(value) {
-    var hours = Math.floor(value);
+    var hours = Math.floor(value).mod(24);
     var minutes = Math.floor((value - Math.floor(value)) * 60);
     if(minutes < 10){
         minutes = '0'+minutes;
