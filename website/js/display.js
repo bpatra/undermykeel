@@ -123,6 +123,18 @@ function ValidateTideInput() {
     var highTideTime = timeToFloat($("#hightide_time").val());
     var M = parseFloat($("#tidal_value").val());
 
+    if (isNaN(lowTideTime)) {
+        alert("invalid low tide time");
+    }
+
+    if (isNaN(highTideTime)) {
+        alert("invalid high tide time");
+    }
+
+    if (isNaN(M)) {
+        alert("invalid tidal value");
+    }
+
     var duration = Math.min(smartDuration(lowTideTime, highTideTime),smartDuration(highTideTime, lowTideTime));
     if (duration < 1 || duration > 10) {
         alert("suspicious tide duration");
