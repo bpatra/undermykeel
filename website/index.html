@@ -3,6 +3,10 @@
 <head>
     <title>Under my keel</title>
     <link rel="stylesheet" href="css/StyleSheet.css" type="text/css" />
+    <link rel="stylesheet" href="css/lines.css" type="text/css" />
+    <link rel="stylesheet" href="css/detail.css" type="text/css" />
+    <link rel="stylesheet" href="css/legend.css" type="text/css" />
+    <link rel="stylesheet" href="css/graph.css" type="text/css" />
     <script type="text/javascript" src="js/jquery-2.0.2.min.js"></script>
     <script type="text/javascript" src="js/display.js"></script>
     <script type="text/javascript" src="js/d3.min.js"></script>
@@ -14,15 +18,15 @@
     <section id="tide_selection">
         <section id="hightide">
             <h1>High tide</h1>
-            <input type="time" id="hightide_time">
-            <input type="number" id="hightide_value">
-            <label>m.</label>
+            <input type="time" id="hightide_time" value="10:00">
         </section>
         <section id="lowtide">
             <h1>Low tide</h1>
-            <input type="time" id="lowtide_time">
-            <input type="number" id="lowtide_value">
-            <label>m.</label>
+            <input type="time" id="lowtide_time" value="16:00">
+        </section>
+        <section id="tidal">
+            <h1>Tidal</h1>
+            <input type="number" id="tidal_value" value="10">
         </section>
          <input type="button" id="switchtide" value="Switch tide"/>
     </section>
@@ -38,8 +42,8 @@
         </section>
         <section id="from_onepoint">
             <h2>From an entry</h2>
-            <input type="time" id="onepoint_time"/>
-            <input type="number" id="onepoint_value"/>
+            <input type="time" id="onepoint_time" value ="13:00"/>
+            <input type="number" id="onepoint_value" value="5"/>
             <label>m.</label>
         </section>
     </section>
