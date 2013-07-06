@@ -40,10 +40,10 @@ function ComputeGraph() {
     var D = isEbb ? smartDuration(highTideTime ,lowTideTime) : smartDuration(lowTideTime, highTideTime);
     var data = [];
     var start = isEbb ? highTideTime : lowTideTime;
-    var h0 = hFromt(D, M, localPointTime - start) - localPointValue;
+    var h0 = hFromt(D, M, localPointTime - highTideTime) - localPointValue;
     for (var i = 0; i < 1000; i++) {
         var t1 = i * D / 1000;
-        var t2 = start + t1 - highTideTime;
+        var t2 = start + t1 - lowTideTime;
         data.push({ x: start + t1, y: hFromt(D, M, t2) + h0 });
     }
 
@@ -66,6 +66,10 @@ function ComputeGraph() {
     });
 
     var axes = new Rickshaw.Graph.Axis.Time({
+        graph: graph
+    });
+
+    var axes = new Rickshaw.Graph.Axis.Y({
         graph: graph
     });
 
