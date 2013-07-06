@@ -25,22 +25,20 @@
 });
 
 function ComputeGraph() {
-    var isFromGroundZero = $("#fromgroundzero").is(':checked')
-    if (isFromGroundZero) {
-        alert("feature not ready yet");
-    }
+
+    ValidateTideInput();
+
     var lowTideTime = timeToFloat($("#lowtide_time").val());
     var highTideTime = timeToFloat($("#hightide_time").val());
     var M = parseFloat($("#tidal_value").val());
-    var localPointTime = timeToFloat($("#onepoint_time").val());
-    var localPointValue = parseFloat($("#onepoint_value").val());
-
-    //TODO add validation.
+    
     var isEbb = isEbbTide(highTideTime, lowTideTime);
     var D = isEbb ? smartDuration(highTideTime ,lowTideTime) : smartDuration(lowTideTime, highTideTime);
     var data = [];
     var start = isEbb ? highTideTime : lowTideTime;
-    var h0 = hFromt(D, M, localPointTime - highTideTime) - localPointValue;
+
+    var h0 = h0FromLocalPoint(D, M, highTideTime);
+
     for (var i = 0; i < 1000; i++) {
         var t1 = i * D / 1000;
         var t2 = start + t1 - lowTideTime;
@@ -94,9 +92,15 @@ function isEbbTide(highTideTime, lowTideTime) {
     return m1 < m2; 
 }
 
-function hFromt(D, M, t, isEbb){
+function hFromt(D, M, t){
     var y = Math.sin(Math.PI * t / (2 * D));
     return M * y * y;
+}
+
+function h0FromLocalPoint(D, M, highTideTime) {
+    var localPointTime = timeToFloat($("#onepoint_time").val());
+    var localPointValue = parseFloat($("#onepoint_value").val());
+    return hFromt(D, M, localPointTime - highTideTime) - localPointValue;
 }
 
 function floatToTime(value) {
@@ -119,11 +123,17 @@ function timeToFloat(timeString) {
     return hours + minutes / 60.0;
 }
 
-function ValidateInput() {
+function ValidateTideInput() {
     var lowTideTime = timeToFloat($("#lowtide_time").val());
     var highTideTime = timeToFloat($("#hightide_time").val());
     var M = parseFloat($("#tidal_value").val());
-    var localPointTime = timeToFloat($("#onepoint_time").val());
-    var localPointValue = parseFloat($("#onepoint_value").val());
 
+    var duration = Math.min(smartDuration(lowTideTime, highTideTime),smartDuration(highTideTime, lowTideTime));
+    if (duration < 1 || duration > 10) {
+        alert("suspicious tide duration");
+    }
+
+    if (M <= 0) {
+        alert("tidal must be positive");
+    }
 }
