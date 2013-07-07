@@ -87,8 +87,8 @@ function hFromt(D, M, t){
 
 function devPressure() {
     var pressure = parseFloat($("#pressure").val());
-    if (pressure < 960 || pressure > 1060) {
-        alert("invalid pressure range");
+    if (isNaN(pressure) || pressure < 960 || pressure > 1060) {
+        alert("invalid pressure");
     }
     var delta = pressure - 1013;
     return delta / 100;
@@ -97,6 +97,14 @@ function devPressure() {
 function h0FromLocalPoint(D, M, highTideTime) {
     var localPointTime = timeToFloat($("#onepoint_time").val());
     var localPointValue = parseFloat($("#onepoint_value").val());
+    if (isNaN(localPointTime)) {
+        alert("invalid local point tide time");
+    }
+
+    if (isNaN(localPointValue)) {
+        alert("invalid local point tide value");
+    }
+
     return hFromt(D, M, localPointTime - highTideTime) - localPointValue;
 }
 
