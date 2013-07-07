@@ -39,3 +39,40 @@
         'fr':" L'utilisateur ne doit pas se baser sur cette application comme source principale de navigation en eaux peu profondes."
     }
 };
+
+var localizedErrors = {
+    TidalPos: {
+        'en': 'Tidal must be positive.',
+        'fr': 'Le marnage doit être positif.'
+    },
+    SupiciousTideDur: {
+        'en': 'Suspicious tide duration.',
+        'fr': 'La durée de marée est supecte.'
+    },
+    Tidal: {
+        'en': 'Invalid tidal value.',
+        'fr': 'Valeur de marnage invalide'
+    },
+    HighTideInvalid: {
+        'en': 'Invalid high tide time.',
+        'fr': 'Heure de pleine mer invalide.'
+    },
+    LowTideInvalid: {
+        'en': 'Invalid low tide time.',
+        'fr': 'Heure de basse mer invalide.'
+    },
+    InvalidPressure: {
+        'en': 'Invalid atmospheric pressure.',
+        'fr': 'Pression atmosphérique invalide.'
+    },
+    InvalidPointDataTime: {
+        'en': 'Invalid point data time.',
+        'fr': 'Donnée ponctuelle horaire invalide.'
+    },
+    InvalidPointDataValue: {
+        'en': 'Invalid point data sea level.',
+        'fr': "Donnée ponctuelle de hauteur d'eau invalide."
+    }
+
+};
+
