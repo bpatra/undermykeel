@@ -34,10 +34,10 @@ function ComputeGraph() {
 
     var h0 = h0FromLocalPoint(D, M, highTideTime);
 
-    for (var i = 0; i < 1000; i++) {
-        var t1 = i * D / 1000;
+    for (var i = 0; i < 5000; i++) {
+        var t1 = i * D / 5000;
         var t2 = start + t1 - lowTideTime;
-        data.push({ x: start + t1, y: hFromt(D, M, t2) + h0 });
+        data.push({ x: start + t1, y: hFromt(D, M, t2) - h0 });
     }
 
     var graph = new Rickshaw.Graph({
