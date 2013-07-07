@@ -1,11 +1,4 @@
 ﻿$(document).ready(function () {
-    $("#switchtide").click(function () {
-        var elt1 = $("section#tide_selection").children().eq(0);
-        var elt2 = $("section#tide_selection").children().eq(1);
-        elt2.insertBefore(elt1);
-        isDescendant != isDescendant;
-    });
-
     $("#compute").click(function () {
         $("#input").toggle('slow');
         $("#chart").empty();
