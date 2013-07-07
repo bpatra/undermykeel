@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/detail.css" type="text/css" />
     <link rel="stylesheet" href="css/legend.css" type="text/css" />
     <link rel="stylesheet" href="css/graph.css" type="text/css" />
+    <script type="text/javascript" src="js/lang.js"></script>
     <script type="text/javascript" src="js/jquery-2.0.2.min.js"></script>
     <script type="text/javascript" src="js/display.js"></script>
     <script type="text/javascript" src="js/d3.min.js"></script>
@@ -14,45 +15,48 @@
     <script type="text/javascript"src="js/rickshaw.min.js"></script>
 </head>
 <body>
+
+
 <section id="input">
+    <input list="languages">
+    <datalist id="languages">
+      <option value="English">
+      <option value="Français">
+    </datalist>
     <section id="tide_selection">
         <section id="hightide">
-            <h1>High tide</h1>
+            <h1 id="hightideheader"></h1>
             <input type="time" id="hightide_time" value="10:00">
         </section>
         <section id="lowtide">
-            <h1>Low tide</h1>
+            <h1 id="lowtideheader"></h1>
             <input type="time" id="lowtide_time" value="16:00">
         </section>
         <section id="tidal">
-            <h1>Tidal</h1>
+            <h1 id="tidalheader"></h1>
             <input type="number" id="tidal_value" value="10">
             <label for="tidal_value">m.</label>
         </section>
         <section id="atmospheric">
-            <h1>Atmospheric pressure</h1>
+            <h1 id="atmosphericheader"></h1>
             <input type="number" id="pressure" value="1013">
             <label for="pressure">hPa.</label>
         </section>
     </section>
     <section id="one_point">
-        <h2>From a location</h2>
+        <h2 id="one_pointheader"></h2>
         <input type="time" id="onepoint_time" value ="13:00"/>
         <input type="number" id="onepoint_value" value="5"/>
         <label for="onepoint_value">m.</label>
     </section>
-    <input type="button" id="compute" value="Get tide curve"/>
+    <input type="button" id="compute"/>
 </section>
 <section id="graph" style="display:none;">
     <div id="chart"></div>
-    <input type="button" id="back" value="Back"/>
+    <input type="button" id="back"/>
 </section>
 
 </body>
 </html>
-<footer>
-  <p>
-  Deepness computed using the SHOM harmonic approximation method. 
-  The end-user must not rely on this application as a primary source for sailing shallow waters.
-  </p>
+<footer id="disclaimer">
 </footer>

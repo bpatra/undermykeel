@@ -10,10 +10,12 @@
         $("#input").toggle('slow');
         $("#graph").toggle('slow');
     });
+
+    LocalizePage('fr');
+
 });
 
 function ComputeGraph() {
-
     ValidateTideInput();
 
     var lowTideTime = timeToFloat($("#lowtide_time").val());
@@ -100,11 +102,9 @@ function h0FromLocalPoint(D, M, highTideTime) {
     if (isNaN(localPointTime)) {
         alert("invalid local point tide time");
     }
-
     if (isNaN(localPointValue)) {
         alert("invalid local point tide value");
     }
-
     return hFromt(D, M, localPointTime - highTideTime) - localPointValue;
 }
 
@@ -154,3 +154,16 @@ function ValidateTideInput() {
         alert("tidal must be positive");
     }
 }
+
+function LocalizePage(lang) {
+    $("#hightideheader").text(localizedStrings.High_tide[lang]);
+    $("#lowtideheader").text(localizedStrings.Low_tide[lang]);
+    $("#lowtideheader").text(localizedStrings.Low_tide[lang]);
+    $("#tidalheader").text(localizedStrings.Tidal[lang]);
+    $("#atmosphericheader").text(localizedStrings.Atmospheric_pressure[lang]);
+    $("#one_pointheader").text(localizedStrings.Point_data[lang]);
+    $("#compute").prop('value', localizedStrings.Display[lang]);
+    $("#back").prop('value', localizedStrings.Back[lang]);
+    $('<p>' + localizedStrings.Method[lang] + '</p>').appendTo("#disclaimer");
+    $('<p>' + localizedStrings.Disclaimer[lang] + '</p>').appendTo("#disclaimer");
+};
