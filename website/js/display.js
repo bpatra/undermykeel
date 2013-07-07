@@ -26,11 +26,12 @@ function ComputeGraph() {
     var start = isEbb ? highTideTime : lowTideTime;
 
     var h0 = h0FromLocalPoint(D, M, highTideTime);
+    var delta = devPressure();
 
     for (var i = 0; i < 5000; i++) {
         var t1 = i * D / 5000;
         var t2 = start + t1 - lowTideTime;
-        data.push({ x: start + t1, y: hFromt(D, M, t2) - h0 });
+        data.push({ x: start + t1, y: hFromt(D, M, t2) - h0 - delta });
     }
 
     var graph = new Rickshaw.Graph({
@@ -62,7 +63,6 @@ function ComputeGraph() {
     });
 
     graph.render();
-
 }
 
 Number.prototype.mod = function (n) {
@@ -83,6 +83,15 @@ function isEbbTide(highTideTime, lowTideTime) {
 function hFromt(D, M, t){
     var y = Math.sin(Math.PI * t / (2 * D));
     return M * y * y;
+}
+
+function devPressure() {
+    var pressure = parseFloat($("#pressure").val());
+    if (pressure < 960 || pressure > 1060) {
+        alert("invalid pressure range");
+    }
+    var delta = pressure - 1013;
+    return delta / 100;
 }
 
 function h0FromLocalPoint(D, M, highTideTime) {
