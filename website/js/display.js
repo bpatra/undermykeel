@@ -48,9 +48,9 @@ function ComputeGraph(lang) {
         height: 250,
 		renderer: 'line',
         series: [{
-            color: 'steelblue',
+            color: 'red',
             data: data,
-            name: 'depth'
+            name: localizedStrings.Depth[lang]
         }]
     });
 
