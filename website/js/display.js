@@ -51,6 +51,13 @@ function ComputeAmGraph(lang){
 			valueAxis.inside = true;
 			chart.addValueAxis(valueAxis);
 
+		
+						// CURSOR
+			var chartCursor = new AmCharts.ChartCursor();
+			chartCursor.cursorAlpha = 0;
+			chartCursor.cursorPosition = "mouse";
+			chart.addChartCursor(chartCursor);
+			
 			// GRAPH                
 			graph = new AmCharts.AmGraph();
 			graph.type = "smoothedLine"; // this line makes the graph smoothed line.
