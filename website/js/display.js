@@ -55,6 +55,7 @@ function ComputeAmGraph(lang){
 		
 						// CURSOR
 			var chartCursor = new AmCharts.ChartCursor();
+			chartCursor.zoomable = false;
 			chart.addChartCursor(chartCursor);
 			
 			// GRAPH                
