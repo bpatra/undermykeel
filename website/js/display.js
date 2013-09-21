@@ -4,12 +4,12 @@
     $("#compute").click(function () {
 		ComputeAmGraph(lang);
         $("#input").toggle('slow');
-        $("#graph").toggle('slow');
     });
 
     $("#back").click(function () {
         $("#input").toggle('slow');
         $("#graph").toggle('slow');
+		$("#graphcontainer").empty();
     });
 
     $("#languageselector").on('change', function () {
@@ -21,56 +21,49 @@
 });
 
 function ComputeAmGraph(lang){
-			var chart;
-            var graph;
-
             // months in JS are zero-based, 0 means January 
             var chartData = ComputeGraphData(lang);
-            
-
-			// SERIAL CHART
-			chart = new AmCharts.AmSerialChart();
+			// // // SERIAL CHART
+			var chart = new AmCharts.AmSerialChart();
 			chart.panEventsEnabled = true;
 			chart.pathToImages = "./js/images/";
 			chart.dataProvider = chartData;
-			chart.marginLeft = 10;
-			chart.categoryField = "x";
-			chart.zoomOutButton = {
-				backgroundColor: '#000000',
-				backgroundAlpha: 0.15
-			};
-
+			chart.categoryField = "T";
+			chart.numberFormatter = {precision:2, decimalSeparator:'.', thousandsSeparator:','};
+			chart.marginRight = 10;
 
 			// AXES
 			// category
 			var categoryAxis = chart.categoryAxis;
-			categoryAxis.gridAlpha = 0;
-
+			categoryAxis.parseDates = true;
+			categoryAxis.minPeriod = "mm";
+			categoryAxis.equalSpacing = true;
+			categoryAxis.boldPeriodBeginning = false;
+			categoryAxis.gridAlpha = 0.05;
+			
 			// value
 			var valueAxis = new AmCharts.ValueAxis();
 			valueAxis.axisAlpha = 0;
 			valueAxis.inside = true;
 			chart.addValueAxis(valueAxis);
 
-		
-						// CURSOR
+			// CURSOR
 			var chartCursor = new AmCharts.ChartCursor();
 			chartCursor.zoomable = false;
+			chartCursor.categoryBalloonDateFormat = "JJ:NN";
 			chart.addChartCursor(chartCursor);
 			
+			
 			// GRAPH                
-			graph = new AmCharts.AmGraph();
+			var graph = new AmCharts.AmGraph();
 			graph.type = "smoothedLine"; // this line makes the graph smoothed line.
-			graph.lineColor = "#d1655d";
-			graph.negativeLineColor = "#637bb6"; // this line makes the graph to change color when it drops below 0
-			graph.bullet = "round";
-			graph.bulletSize = 5;
+			graph.lineColor ="#637bb6";
+			// graph.negativeLineColor =  "#d1655d"; // this line makes the graph to change color when it drops below 0
+			graph.bulletSize = 0;
 			graph.lineThickness = 2;
-			graph.valueField = "y";
+			graph.valueField = "H";
 			chart.addGraph(graph);
 
-			
-			
 			// WRITE
 			chart.write("graphcontainer");
 }
@@ -90,11 +83,12 @@ function ComputeGraphData(lang) {
 
     var h0 = h0FromLocalPoint(D, M, highTideTime);
     var delta = devPressure();
-
-    for (var i = 0; i < 20; i++) {
-        var t1 = i * D / 20;
+	
+	var N = 80;
+    for (var i = 0; i < N; i++) {
+        var t1 = i * D / N;
         var t2 = start + t1 - lowTideTime;
-        data.push({ x: start + t1, y: hFromt(D, M, t2) - h0 - delta });
+        data.push({ T: floatToTime(start + t1), H: hFromt(D, M, t2) - h0 - delta });
     }
 
    return data;
@@ -144,13 +138,8 @@ function h0FromLocalPoint(D, M, highTideTime) {
 function floatToTime(value) {
     var hours = Math.floor(value).mod(24);
     var minutes = Math.floor((value - Math.floor(value)) * 60);
-    if(minutes < 10){
-        minutes = '0'+minutes;
-    }
-    if(hours < 10) {
-        hours = '0' + hours;
-    }
-    return  hours+ ':' + minutes;
+
+    return  new Date(1998,07,12,hours, minutes);
 }
 
 function timeToFloat(timeString) {

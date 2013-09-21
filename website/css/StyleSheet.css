@@ -80,8 +80,3 @@ input {
     -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
     -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
 }
-
-.rickshaw_graph .detail .x_label
-{
-    background:Red;
-}
