@@ -30,6 +30,7 @@ function ComputeAmGraph(lang){
 
 			// SERIAL CHART
 			chart = new AmCharts.AmSerialChart();
+			chart.panEventsEnabled = true;
 			chart.pathToImages = "./js/images/";
 			chart.dataProvider = chartData;
 			chart.marginLeft = 10;
@@ -69,7 +70,7 @@ function ComputeAmGraph(lang){
 			graph.valueField = "y";
 			chart.addGraph(graph);
 
-			chart.panEventsEnabled = true;
+			
 			
 			// WRITE
 			chart.write("graphcontainer");
