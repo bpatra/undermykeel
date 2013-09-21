@@ -84,8 +84,8 @@ function ComputeGraphData(lang) {
     var h0 = h0FromLocalPoint(D, M, highTideTime);
     var delta = devPressure();
 
-    for (var i = 0; i < 5000; i++) {
-        var t1 = i * D / 5000;
+    for (var i = 0; i < 20; i++) {
+        var t1 = i * D / 20;
         var t2 = start + t1 - lowTideTime;
         data.push({ x: start + t1, y: hFromt(D, M, t2) - h0 - delta });
     }
