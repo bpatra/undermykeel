@@ -2,9 +2,8 @@
     var lang = 'en';
 
     $("#compute").click(function () {
+		ComputeAmGraph(lang);
         $("#input").toggle('slow');
-        $("#chart").empty();
-        ComputeGraph(lang);
         $("#graph").toggle('slow');
     });
 
@@ -21,7 +20,56 @@
 
 });
 
-function ComputeGraph(lang) {
+function ComputeAmGraph(lang){
+			var chart;
+            var graph;
+
+            // months in JS are zero-based, 0 means January 
+            var chartData = ComputeGraphData(lang);
+            
+
+			// SERIAL CHART
+			chart = new AmCharts.AmSerialChart();
+			chart.pathToImages = "./js/images/";
+			chart.dataProvider = chartData;
+			chart.marginLeft = 10;
+			chart.categoryField = "x";
+			chart.zoomOutButton = {
+				backgroundColor: '#000000',
+				backgroundAlpha: 0.15
+			};
+
+
+			// AXES
+			// category
+			var categoryAxis = chart.categoryAxis;
+			categoryAxis.gridAlpha = 0;
+
+			// value
+			var valueAxis = new AmCharts.ValueAxis();
+			valueAxis.axisAlpha = 0;
+			valueAxis.inside = true;
+			chart.addValueAxis(valueAxis);
+
+			// GRAPH                
+			graph = new AmCharts.AmGraph();
+			graph.type = "smoothedLine"; // this line makes the graph smoothed line.
+			graph.lineColor = "#d1655d";
+			graph.negativeLineColor = "#637bb6"; // this line makes the graph to change color when it drops below 0
+			graph.bullet = "round";
+			graph.bulletSize = 5;
+			graph.lineThickness = 2;
+			graph.valueField = "y";
+			chart.addGraph(graph);
+
+			chart.panEventsEnabled = true;
+			
+			// WRITE
+			chart.write("graphcontainer");
+}
+
+
+function ComputeGraphData(lang) {
     ValidateTideInput();
 
     var lowTideTime = timeToFloat($("#lowtide_time").val());
@@ -42,35 +90,7 @@ function ComputeGraph(lang) {
         data.push({ x: start + t1, y: hFromt(D, M, t2) - h0 - delta });
     }
 
-    var graph = new Rickshaw.Graph({
-        element: document.querySelector("#chart"),
-        width: 580,
-        height: 250,
-		renderer: 'line',
-        series: [{
-            color: 'red',
-            data: data,
-            name: localizedStrings.Depth[lang]
-        }]
-    });
-
-    var hoverDetail = new Rickshaw.Graph.HoverDetail({
-        graph: graph,
-        xFormatter: function(x) { return floatToTime(x)},
-        yFormatter: function (y) { return y.toFixed(2) + " m" }
-    });
-
-    var axes = new Rickshaw.Graph.Axis.X({
-        graph: graph,
-        tickFormat: floatToTime
-    });
-
-    var axes = new Rickshaw.Graph.Axis.Y({
-        graph: graph,
-        tickFormat: Rickshaw.Fixtures.Number.formatKMBT
-    });
-
-    graph.render();
+   return data;
 }
 
 Number.prototype.mod = function (n) {
