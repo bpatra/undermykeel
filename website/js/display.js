@@ -55,8 +55,6 @@ function ComputeAmGraph(lang){
 		
 						// CURSOR
 			var chartCursor = new AmCharts.ChartCursor();
-			chartCursor.cursorAlpha = 0;
-			chartCursor.cursorPosition = "mouse";
 			chart.addChartCursor(chartCursor);
 			
 			// GRAPH                
