@@ -2,7 +2,7 @@
     var lang = 'en';
 
     $("#compute").click(function () {
-		ComputeAmGraph(lang);
+		ComputeAmGraph();
         $("#input").toggle('slow');
     });
 
@@ -20,9 +20,9 @@
 
 });
 
-function ComputeAmGraph(lang){
+function ComputeAmGraph(l){
             // months in JS are zero-based, 0 means January 
-            var chartData = ComputeGraphData(lang);
+            var chartData = ComputeGraphData();
 			// // // SERIAL CHART
 			var chart = new AmCharts.AmSerialChart();
 			chart.panEventsEnabled = true;
@@ -39,7 +39,7 @@ function ComputeAmGraph(lang){
 			categoryAxis.minPeriod = "mm";
 			categoryAxis.equalSpacing = true;
 			categoryAxis.boldPeriodBeginning = false;
-			categoryAxis.gridAlpha = 0.05;
+			categoryAxis.gridAlpha = 0;
 			
 			// value
 			var valueAxis = new AmCharts.ValueAxis();
@@ -69,7 +69,7 @@ function ComputeAmGraph(lang){
 }
 
 
-function ComputeGraphData(lang) {
+function ComputeGraphData() {
     ValidateTideInput();
 
     var lowTideTime = timeToFloat($("#lowtide_time").val());
