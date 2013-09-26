@@ -11,47 +11,44 @@
 <body>
 
 
-<section id="input">
+<menu>
     <select id="languageselector">
         <option value ="en" selected>English</option>
         <option value ="fr">Français</option>
     </select>
-    <section id="tide_selection">
-        <section id="hightide">
+    <div>
+        <div>
             <h1 id="hightideheader"></h1>
             <input type="time" id="hightide_time" value="10:00">
-        </section>
-        <section id="lowtide">
+        </div>
+        <div>
             <h1 id="lowtideheader"></h1>
             <input type="time" id="lowtide_time" value="16:00">
-        </section>
-        <section id="tidal">
+        </div>
+        <div>
             <h1 id="tidalheader"></h1>
             <input type="number" id="tidal_value" value="10">
             <label for="tidal_value">m.</label>
-        </section>
-        <section id="atmospheric">
+        </div>
+        <div>
             <h1 id="atmosphericheader"></h1>
             <input type="number" id="pressure" value="1013">
             <label for="pressure">hPa.</label>
-        </section>
-    </section>
-    <section id="one_point">
         <h2 id="one_pointheader"></h2>
+        </div>
+    </div>
+    <div>
         <input type="time" id="onepoint_time" value ="13:00"/>
         <input type="number" id="onepoint_value" value="5"/>
         <label for="onepoint_value">m.</label>
-    </section>
+    </div>
     <input type="button" id="compute"/>
-</section>
-    <div id="graphcontainer" style="width: 500px; height: 600px;">
-	</div>
+</menu>
+<div id="mainpane">
+	<div id="graphcontainer">hello</div>
+	<div id="disclaimer"></div>
+</div>
 
-</section>	
-    <input type="button" id="back"/>
-
-</section>
-<footer id="disclaimer">
 </footer>
 </body>
 </html>

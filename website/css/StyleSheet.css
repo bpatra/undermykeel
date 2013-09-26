@@ -15,10 +15,10 @@ body
     background-color:#E5E4E2;
 }
 
-h1,h2{
+div {
     font-family:'Segoe UI', Tahoma, sans-serif; 
     font-size:130%;
-    padding:0.2em 0.2em 0.2em 0.2em;
+    padding:0.01% 0.02% 0.02% 0.02%;
 }
 
 input,select{
@@ -27,46 +27,30 @@ input,select{
     color:#737CA1
 }
 
-
-section{
-	display: block;
-	border-radius: 15px;
-	background:#98AFC7;
-	color:WhiteSmoke;
+menu {
+    float:right;
+    width:30%;
+	background-color: #FF0000;
 }
 
-section section{
-	display: block;
-    margin:1em 0.5em 1em 0.5em;
-	border-radius: 15px;
-	background:#737CA1;
-	color:WhiteSmoke;
+div#mainpane{
+	background-color: #BCC6CC;
+	width:70%;
+	text-align: center;
+	font-size:80%;
 }
 
-section section section
+div#graphcontainer{
+	display: inline-block;
+	width: 500px;
+	height: 400px;
+	background-color: #FF00FF;
+}
+
+input[type="button"]
 {
-    margin:0;
-}
-
-section#subgraph
-{
-}
-
-div#graphcontainer
-{
-    margin:1em 0.1em 1em 0.1em;
-    padding:1em 0em 0em 0em;
-}
-
-
-input {
-   margin: 0.1em 0.1em 1em 0.1em
-}
-
- input[type="button"]
-{
-    padding: 10px 15px 11px !important;
-    font-size: 18px !important;
+    padding: 5% 5% 5% !important;
+    font-size: 100% !important;
     background-color: #BCC6CC;
     font-weight: bold;
     color: #ffffff;

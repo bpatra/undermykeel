@@ -1,15 +1,9 @@
 ﻿$(document).ready(function () {
     var lang = 'en';
-
+	ComputeAmGraph();
     $("#compute").click(function () {
 		ComputeAmGraph();
         $("#input").toggle('slow');
-    });
-
-    $("#back").click(function () {
-        $("#input").toggle('slow');
-        $("#graph").toggle('slow');
-		$("#graphcontainer").empty();
     });
 
     $("#languageselector").on('change', function () {
@@ -17,7 +11,6 @@
         LocalizePage(lang);
     });
     LocalizePage(lang);
-
 });
 
 function ComputeAmGraph(l){
