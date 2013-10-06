@@ -27,8 +27,8 @@
     },
 
     Method:{
-        'en':'Depth computed using the SHOM harmonic approximation method.',
-        'fr':"Profondeur d'eau calculée par la méthode d'approximation harmonique du SHOM."
+        'en':"Depth computed using the <a href='http://fr.wikipedia.org/wiki/Calcul_de_mar%C3%A9e'>SHOM harmonic approximation method.</a>",
+        'fr':"Profondeur d'eau calculée par la <a href='http://fr.wikipedia.org/wiki/Calcul_de_mar%C3%A9e'>méthode d'approximation harmonique du SHOM</a>."
     },
 
     Disclaimer:{

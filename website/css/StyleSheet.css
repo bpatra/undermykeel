@@ -1,7 +1,8 @@
 ﻿/*
-Platinum	#E5E4E2	Platinum
-Metallic Silver	#BCC6CC	Metallic Silver
-Blue Gray	#98AFC7	Blue Gray
+dark	#233852
+medium	#4771A5
+light	#a3b8d2
+very light =#dae2ed
 */
 
 /*reset*/
@@ -15,56 +16,72 @@ body
 	text-align:center;
 }
 
-div {
-    margin:1% 0% 0% 0%;
-}
-
-input,select{
-    border-radius:5px;
-    color:#737CA1
-}
-
 menu {
     width:29%;
-	background-color: #FF0000;
 	float:left;
 }
 
 div#mainpane{
 	width:70%;
 	float:left;
+	margin: 2.5% 0% 0% 0%;
 }
 
 div#graphcontainer{
-	background-color: #FF00FF; /*jQuery width and height populated*/
+ /*jQuery width and height populated*/
 	padding: 2px 2px 2px 2px;
-	margin: 0 auto
+	margin: 0 auto;
 }
 
+div#disclaimer{
+	padding: 2% 0% 0% 0%;
+}
 
 .infocategory{
-	text-align:left;
-	background-color: #560D0D;
+	padding: 1em 1em 1em 1em;
+	background-color: #4771A5;
+	 border-radius: 1em;
+    -moz-border-radius: 1em;
+    -webkit-border-radius: 1em;
 }
 
+.infocategory{
+	margin: 2.5% 5% 5% 5%;
+}
 
 .infocategory h1{
 	text-align:left;
+	font-weight: bold;
+	color:#dae2ed;
 }
 
+.datainput{
+	margin : 2% 1% 1% 1%;
+}
 
+.datainput h1{
+	text-align:center;
+	font-weight:normal;	
+}
+
+.datainput input,select,label {
+	border-radius: 0.5em;
+    -moz-border-radius: 0.5em;
+    -webkit-border-radius: 0.5em;
+	color:#233852;
+}
 
 input[type="button"]
 {
     padding: 5% 5% 5% !important;
     font-size: 100% !important;
-    background-color: #BCC6CC;
+    background-color: #8A949A;
     font-weight: bold;
     color: #ffffff;
     border-radius: 5px;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
-    border: 1px solid #BCC6CC;
+    border: 1px solid #8A949A;
     cursor: pointer;
     box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
     -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
