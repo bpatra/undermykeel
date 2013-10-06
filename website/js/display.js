@@ -1,5 +1,10 @@
 ﻿$(document).ready(function () {
     var lang = 'en';
+	var cw = $('#graphcontainer').parent().width();
+	var usedWidth = Math.round((cw*80)/100); //80 percent of the parent.
+	var usedHeight = Math.round(usedWidth/2);
+	$('#graphcontainer').css({"width":usedWidth+"px","height":usedHeight+'px'});
+	
 	ComputeAmGraph();
     $("#compute").click(function () {
 		ComputeAmGraph();
@@ -13,7 +18,7 @@
     LocalizePage(lang);
 });
 
-function ComputeAmGraph(l){
+function ComputeAmGraph(){
             // months in JS are zero-based, 0 means January 
             var chartData = ComputeGraphData();
 			// // // SERIAL CHART
