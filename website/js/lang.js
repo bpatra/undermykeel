@@ -15,10 +15,7 @@
         'en': 'Tidal',
         'fr': 'Marnage'
     },
-    Point_data: {
-        'en': 'Point data',
-        'fr': 'Données ponctuelles'
-    },
+
     Display: {
         'en':'Get tide curve',
         'fr':'Afficher la courbe de marée'
@@ -42,7 +39,27 @@
     Depth:{
         'en':'depth',
         'fr':'hauteur'
-    }
+    },
+	
+	TideParameters:{
+        'en':'Tide parameters',
+        'fr':'Paramètres de la marée'
+    },
+	
+	LocalData:{
+        'en':'Local data',
+        'fr':'Données locales'
+    },
+	
+	LocalTime:{
+		'en':'Time',
+		'fr':'Heure'
+	},
+	
+	LocalDepth:{
+		'en':'Depth',
+		'fr':'Profondeur'
+	}
 };
 
 var localizedErrors = {

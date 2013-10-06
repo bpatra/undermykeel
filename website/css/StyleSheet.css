@@ -16,7 +16,7 @@ body
 }
 
 div {
-    padding:0.01% 0.02% 0.02% 0.02%;
+    margin:1% 0% 0% 0%;
 }
 
 input,select{
@@ -31,16 +31,28 @@ menu {
 }
 
 div#mainpane{
-	background-color: #BCC6CC;
 	width:70%;
-	height = 100%;
 	float:left;
 }
 
 div#graphcontainer{
 	background-color: #FF00FF; /*jQuery width and height populated*/
+	padding: 2px 2px 2px 2px;
 	margin: 0 auto
 }
+
+
+.infocategory{
+	text-align:left;
+	background-color: #560D0D;
+}
+
+
+.infocategory h1{
+	text-align:left;
+}
+
+
 
 input[type="button"]
 {

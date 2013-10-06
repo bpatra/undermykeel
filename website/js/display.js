@@ -181,10 +181,13 @@ function LocalizePage(lang) {
     $("#lowtideheader").text(localizedStrings.Low_tide[lang]);
     $("#tidalheader").text(localizedStrings.Tidal[lang]);
     $("#atmosphericheader").text(localizedStrings.Atmospheric_pressure[lang]);
-    $("#one_pointheader").text(localizedStrings.Point_data[lang]);
     $("#compute").prop('value', localizedStrings.Display[lang]);
     $("#back").prop('value', localizedStrings.Back[lang]);
     $("#disclaimer").empty();
     $('<p>' + localizedStrings.Method[lang] + '</p>').appendTo("#disclaimer");
     $('<p>' + localizedStrings.Disclaimer[lang] + '</p>').appendTo("#disclaimer");
+	$("#tideparameters").text(localizedStrings.TideParameters[lang]);
+	$("#localdata").text(localizedStrings.LocalData[lang]);
+	$("#localtime").text(localizedStrings.LocalTime[lang]);
+	$("#localdepth").text(localizedStrings.LocalDepth[lang]);
 };

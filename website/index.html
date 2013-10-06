@@ -17,30 +17,38 @@
         <option value ="fr">Français</option>
     </select>
     <div>
-        <div>
+	<div class="infocategory">
+		<h1 id="tideparameters"></h1>
+        <div class="datainput">
             <h1 id="hightideheader"></h1>
             <input type="time" id="hightide_time" value="10:00">
         </div>
-        <div>
+        <div class="datainput">
             <h1 id="lowtideheader"></h1>
             <input type="time" id="lowtide_time" value="16:00">
         </div>
-        <div>
+        <div class="datainput">
             <h1 id="tidalheader"></h1>
             <input type="number" id="tidal_value" value="10">
             <label for="tidal_value">m.</label>
         </div>
-        <div>
+        <div class="datainput">
             <h1 id="atmosphericheader"></h1>
             <input type="number" id="pressure" value="1013">
             <label for="pressure">hPa.</label>
-        <h2 id="one_pointheader"></h2>
         </div>
     </div>
-    <div>
-        <input type="time" id="onepoint_time" value ="13:00"/>
-        <input type="number" id="onepoint_value" value="5"/>
-        <label for="onepoint_value">m.</label>
+    <div class="infocategory">
+		<h1 id="localdata"></h1>
+		<div class="datainput">
+			<h1 id="localtime"></h1>
+			<input type="time" id="onepoint_time" value ="13:00"/>
+		</div>
+		<div class="datainput">
+			<h1 id="localdepth"></h1>
+			<input type="number" id="onepoint_value" value="5"/>
+			<label for="onepoint_value">m.</label>
+		</div>
     </div>
     <input type="button" id="compute"/>
 </menu>
