@@ -80,7 +80,7 @@ function ComputeGraphData() {
     var data = [];
     var start = isEbb ? highTideTime : lowTideTime;
 
-    var h0 = h0FromLocalPoint(D, M, highTideTime);
+    var h0 = h0FromLocalPoint(D, M, start);
     var delta = devPressure();
 	
 	var N = 80;
