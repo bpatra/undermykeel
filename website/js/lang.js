@@ -35,8 +35,8 @@
     },
 
     Disclaimer:{
-        'en':'The end-user must not rely on this application as a primary source for sailing shallow waters.',
-        'fr':" L'utilisateur ne doit pas se baser sur cette application comme source principale de navigation en eaux peu profondes."
+        'en':'The end-user must not rely on this application as a primary source for sailing.',
+        'fr':" L'utilisateur ne doit pas se baser sur cette application comme source principale de navigation."
     },
 
     Depth:{
