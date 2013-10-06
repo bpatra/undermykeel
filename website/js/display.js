@@ -1,5 +1,6 @@
-﻿$(document).ready(function () {
-    var lang = 'en';
+﻿var _lang = 'en';
+
+$(document).ready(function () {
 	var cw = $('#graphcontainer').parent().width();
 	var usedWidth = Math.round((cw*80)/100); //80 percent of the parent.
 	var usedHeight = Math.round(usedWidth/2);
@@ -12,10 +13,10 @@
     });
 
     $("#languageselector").on('change', function () {
-        lang = this.value;
-        LocalizePage(lang);
+        _lang = this.value;
+        LocalizePage();
     });
-    LocalizePage(lang);
+    LocalizePage();
 });
 
 function ComputeAmGraph(){
@@ -115,7 +116,7 @@ function hFromt(D, M, t){
 function devPressure() {
     var pressure = parseFloat($("#pressure").val());
     if (isNaN(pressure) || pressure < 960 || pressure > 1060) {
-        alert(localizedErrors.InvalidPressure[lang]);
+        alert(localizedErrors.InvalidPressure[_lang]);
     }
     var delta = pressure - 1013;
     return delta / 100;
@@ -125,10 +126,10 @@ function h0FromLocalPoint(D, M, highTideTime) {
     var localPointTime = timeToFloat($("#onepoint_time").val());
     var localPointValue = parseFloat($("#onepoint_value").val());
     if (isNaN(localPointTime)) {
-        alert(localizedErrors.InvalidPointDataTime[lang]);
+        alert(localizedErrors.InvalidPointDataTime[_lang]);
     }
     if (isNaN(localPointValue)) {
-        alert(localizedErrors.InvalidPointDataValue[lang]);
+        alert(localizedErrors.InvalidPointDataValue[_lang]);
     }
     return hFromt(D, M, localPointTime - highTideTime) - localPointValue;
 }
@@ -154,40 +155,40 @@ function ValidateTideInput() {
     var M = parseFloat($("#tidal_value").val());
 
     if (isNaN(lowTideTime)) {
-        alert(localizedErrors.LowTideInvalid[lang]);
+        alert(localizedErrors.LowTideInvalid[_lang]);
     }
 
     if (isNaN(highTideTime)) {
-        alert(localizedErrors.HighTideInvalid[lang]);
+        alert(localizedErrors.HighTideInvalid[_lang]);
     }
 
     if (isNaN(M)) {
-        alert(localizedErrors.Tidal[lang]);
+        alert(localizedErrors.Tidal[_lang]);
     }
 
     var duration = Math.min(smartDuration(lowTideTime, highTideTime),smartDuration(highTideTime, lowTideTime));
     if (duration < 1 || duration > 10) {
-        alert(localizedErrors.TidalPos[lang]);
+        alert(localizedErrors.TidalPos[_lang]);
     }
 
     if (M <= 0) {
-        alert(localizedErrors.SupiciousTideDur[lang]);
+        alert(localizedErrors.SupiciousTideDur[_lang]);
     }
 }
 
-function LocalizePage(lang) {
-    $("#hightideheader").text(localizedStrings.High_tide[lang]);
-    $("#lowtideheader").text(localizedStrings.Low_tide[lang]);
-    $("#lowtideheader").text(localizedStrings.Low_tide[lang]);
-    $("#tidalheader").text(localizedStrings.Tidal[lang]);
-    $("#atmosphericheader").text(localizedStrings.Atmospheric_pressure[lang]);
-    $("#compute").prop('value', localizedStrings.Display[lang]);
-    $("#back").prop('value', localizedStrings.Back[lang]);
+function LocalizePage() {
+    $("#hightideheader").text(localizedStrings.High_tide[_lang]);
+    $("#lowtideheader").text(localizedStrings.Low_tide[_lang]);
+    $("#lowtideheader").text(localizedStrings.Low_tide[_lang]);
+    $("#tidalheader").text(localizedStrings.Tidal[_lang]);
+    $("#atmosphericheader").text(localizedStrings.Atmospheric_pressure[_lang]);
+    $("#compute").prop('value', localizedStrings.Display[_lang]);
+    $("#back").prop('value', localizedStrings.Back[_lang]);
     $("#disclaimer").empty();
-    $('<p>' + localizedStrings.Method[lang] + '</p>').appendTo("#disclaimer");
-    $('<p>' + localizedStrings.Disclaimer[lang] + '</p>').appendTo("#disclaimer");
-	$("#tideparameters").text(localizedStrings.TideParameters[lang]);
-	$("#localdata").text(localizedStrings.LocalData[lang]);
-	$("#localtime").text(localizedStrings.LocalTime[lang]);
-	$("#localdepth").text(localizedStrings.LocalDepth[lang]);
+    $('<p>' + localizedStrings.Method[_lang] + '</p>').appendTo("#disclaimer");
+    $('<p>' + localizedStrings.Disclaimer[_lang] + '</p>').appendTo("#disclaimer");
+	$("#tideparameters").text(localizedStrings.TideParameters[_lang]);
+	$("#localdata").text(localizedStrings.LocalData[_lang]);
+	$("#localtime").text(localizedStrings.LocalTime[_lang]);
+	$("#localdepth").text(localizedStrings.LocalDepth[_lang]);
 };
