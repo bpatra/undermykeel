@@ -57,7 +57,7 @@ function ComputeAmGraph(){
 			var graph = new AmCharts.AmGraph();
 			graph.type = "smoothedLine"; // this line makes the graph smoothed line.
 			graph.lineColor ="#637bb6";
-			// graph.negativeLineColor =  "#d1655d"; // this line makes the graph to change color when it drops below 0
+			graph.negativeLineColor =  "#d1655d"; // this line makes the graph to change color when it drops below 0
 			graph.bulletSize = 0;
 			graph.lineThickness = 2;
 			graph.valueField = "H";
