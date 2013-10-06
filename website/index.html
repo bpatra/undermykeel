@@ -16,6 +16,7 @@
         <option value ="en" selected>English</option>
         <option value ="fr">Français</option>
     </select>
+	<input type="checkbox" id="frommap" value="1013"><label id="iscoeff" for="frommap"></label>
     <div>
 	<div class="infocategory">
 		<h1 id="tideparameters"></h1>
@@ -31,6 +32,11 @@
             <h1 id="tidalheader"></h1>
             <input type="number" id="tidal_value" value="10">
             <label for="tidal_value">m.</label>
+        </div>
+		<div class="datainput" id="tidalcoeff" style="display:none;">
+            <h1></h1>
+            <input type="number" id="tidalcoeff_value" value="80">
+            <label for="tidalcoeff_value">m.</label>
         </div> 
     </div>
     <div class="infocategory">
@@ -39,16 +45,23 @@
 			<h1 id="localtime"></h1>
 			<input type="time" id="onepoint_time" value ="13:00"/>
 		</div>
+		<div class="datainput" id="localcoeff" style="display:none;">
+            <h1></h1>
+            <input type="number" id="localcoeff_value" value="120">
+            <label for="localcoeff_value">m.</label>
+        </div> 
 		<div class="datainput">
 			<h1 id="localdepth"></h1>
 			<input type="number" id="onepoint_value" value="5"/>
 			<label for="onepoint_value">m.</label>
 		</div>
+	</div>
+	<div class="infocategory">
+	<h1 id="atmosphericheader"></h1>
 		  <div class="datainput">
-            <h1 id="atmosphericheader"></h1>
             <input type="number" id="pressure" value="1013">
             <label for="pressure">hPa.</label>
-        </div>
+		  </div>
     </div>
     <input type="button" id="compute"/>
 </menu>

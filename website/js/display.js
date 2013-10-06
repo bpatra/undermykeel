@@ -1,4 +1,5 @@
 ﻿var _lang = 'en';
+var _isCoeffComputed = false;
 
 $(document).ready(function () {
 	var cw = $('#graphcontainer').parent().width();
@@ -11,6 +12,14 @@ $(document).ready(function () {
 		ComputeAmGraph();
         $("#input").toggle('slow');
     });
+	
+	$("#frommap").click( function(){
+		_isCoeffComputed = $(this).is(':checked');
+		$("#tidalcoeff").toggle('slow');
+		$("#localcoeff").toggle('slow');
+		$("#onepoint_time").parent().toggle('slow');
+		LocalizePage();
+	});
 
     $("#languageselector").on('change', function () {
         _lang = this.value;
@@ -190,5 +199,17 @@ function LocalizePage() {
 	$("#tideparameters").text(localizedStrings.TideParameters[_lang]);
 	$("#localdata").text(localizedStrings.LocalData[_lang]);
 	$("#localtime").text(localizedStrings.LocalTime[_lang]);
-	$("#localdepth").text(localizedStrings.LocalDepth[_lang]);
+	if(!_isCoeffComputed){
+		$("#localdepth").text(localizedStrings.LocalDepth[_lang]);
+		$("#localdata").text(localizedStrings.LocalData[_lang]);
+	}
+	else{
+		$("#localdepth").text(localizedStrings.DepthAtLowTide[_lang]);//LocalDataRef
+		$("#localdata").text(localizedStrings.LocalDataRef[_lang]);
+	}
+	
+	
+	$("#iscoeff").text(localizedStrings.CoeffCheckBox[_lang]);
+	$("#localcoeff").children().eq(0).text(localizedStrings.Coeffs[_lang]);
+	$("#tidalcoeff").children().eq(0).text(localizedStrings.Coeffs[_lang]);
 };
