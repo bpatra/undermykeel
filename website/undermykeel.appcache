@@ -1,0 +1,17 @@
+CACHE MANIFEST
+# 3013-10-06
+
+CACHE:
+index.html
+css/StyleSheet.css
+images/fork_me_on_github.png
+js/amcharts.js
+js/display.js
+js/jquery-2.0.2.min.js
+js/lang.js
+
+# All other resources (e.g. sites) require the user to be online. 
+NETWORK:
+
+
+
