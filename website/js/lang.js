@@ -48,12 +48,7 @@
 	
 	LocalData:{
         'en':'Local data',
-        'fr':'Données du lieu'
-    },
-	
-	LocalDataRef:{
-        'en':'Local data for reference tide',
-        'fr':'Données du lieu pour la marée de référence'
+        'fr':'Données locales'
     },
 	
 	LocalTime:{
@@ -64,21 +59,6 @@
 	LocalDepth:{
 		'en':'Depth',
 		'fr':'Profondeur'
-	},
-	
-	CoeffCheckBox:{
-		'en':'Compute using a reference tide',
-		'fr':'Calcul à partir d\'une marée de référence'
-	},
-	
-	Coeffs:{
-		'en':'Coefficient',
-		'fr':'Coefficient'
-	},
-	
-	DepthAtLowTide:{
-		'en':'Depth at low tide',
-		'fr':'Profondeur à basse mer '
 	}
 };
 
