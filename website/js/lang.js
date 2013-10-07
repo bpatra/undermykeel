@@ -114,6 +114,11 @@ var localizedErrors = {
     InvalidPointDataValue: {
         'en': 'Invalid point data sea level.',
         'fr': "Donnée ponctuelle de hauteur d'eau invalide."
+    },
+	
+	 InvalidCoefficient: {
+        'en': 'Invalid tide coefficient (must be a number between 30 and 150).',
+        'fr': "Coefficient de marée invalide (doit être un nombre entre 30 et 150)."
     }
 
 };

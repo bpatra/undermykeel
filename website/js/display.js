@@ -88,8 +88,15 @@ function ComputeGraphData() {
     var D = isEbb ? smartDuration(highTideTime ,lowTideTime) : smartDuration(lowTideTime, highTideTime);
     var data = [];
     var start = isEbb ? highTideTime : lowTideTime;
-
-    var h0 = h0FromLocalPoint(D, M, start);
+	
+	var h0 =0;
+	if(_isCoeffComputed){
+		h0 = h0FromReferenceTide(D, M);	
+	}
+    else{
+		h0 = h0FromLocalPoint(D, M, start);
+	}
+	
     var delta = devPressure();
 	
 	var N = 80;
@@ -131,7 +138,7 @@ function devPressure() {
     return delta / 100;
 }
 
-function h0FromLocalPoint(D, M, highTideTime) {
+function h0FromLocalPoint(D, M, start) {
     var localPointTime = timeToFloat($("#onepoint_time").val());
     var localPointValue = parseFloat($("#onepoint_value").val());
     if (isNaN(localPointTime)) {
@@ -140,7 +147,29 @@ function h0FromLocalPoint(D, M, highTideTime) {
     if (isNaN(localPointValue)) {
         alert(localizedErrors.InvalidPointDataValue[_lang]);
     }
-    return hFromt(D, M, localPointTime - highTideTime) - localPointValue;
+    return hFromt(D, M, localPointTime - start) - localPointValue;
+}
+
+function ValidCoeff(coeff){
+	if(isNaN(coeff)){
+		return false;
+	}
+	return coeff >= 30 && coeff <= 150;
+}
+
+function h0FromReferenceTide(D, M) {
+    var localCoeff = parseFloat($("#localcoeff_value").val());
+    var tideCoeff = parseFloat($("#tidalcoeff_value").val());
+	var localPointValue = parseFloat($("#onepoint_value").val());
+	
+    if (!ValidCoeff(localCoeff) || !ValidCoeff(tideCoeff)){
+        alert(localizedErrors.InvalidCoefficient[_lang]);
+    }
+	if (isNaN(localPointValue)) {
+        alert(localizedErrors.InvalidPointDataValue[_lang]);
+    }
+	
+    return M*(localCoeff - tideCoeff)/2.0 + localPointValue;
 }
 
 function floatToTime(value) {
