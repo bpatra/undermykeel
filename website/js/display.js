@@ -91,7 +91,7 @@ function ComputeGraphData() {
 	
 	var h0 =0;
 	if(_isCoeffComputed){
-		h0 = h0FromReferenceTide(D, M);	
+		h0 = -h0FromReferenceTide(D, M)//-1 temporary hack
 	}
     else{
 		h0 = h0FromLocalPoint(D, M, start);
@@ -169,7 +169,7 @@ function h0FromReferenceTide(D, M) {
         alert(localizedErrors.InvalidPointDataValue[_lang]);
     }
 	
-    return M*(localCoeff - tideCoeff)/2.0 + localPointValue;
+    return M*(localCoeff - tideCoeff)/200.0 + localPointValue;
 }
 
 function floatToTime(value) {
