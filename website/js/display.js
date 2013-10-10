@@ -30,18 +30,16 @@ $(document).ready(function () {
 
 function SetGraphContainerSize(){
 	var cw = $('#graphcontainer').parent().width();
-	var usedWidth = Math.round((cw*90)/100); //90 percent of the parent.
-	var usedHeight = Math.round(usedWidth/2);
+	var usedWidth = Math.round((cw*95)/100); //90 percent of the parent.
+	var ratio = Math.min(window.innerHeight/window.innerWidth,1.5);
+	var usedHeight = Math.round(usedWidth*ratio);
 	$('#graphcontainer').css({"width":usedWidth+"px","height":usedHeight+'px'});
 }
 
 var zoom = document.documentElement.clientWidth / window.innerWidth;
 
 $(window).resize(function() {
-    var zoomNew = document.documentElement.clientWidth / window.innerWidth;
-    if (zoom != zoomNew) {
         SetGraphContainerSize();
-    }
 });
 
 function ComputeAmGraph(){

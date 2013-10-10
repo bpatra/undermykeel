@@ -51,11 +51,16 @@ div#mainpane{
 		zoom: 200%;
 	}
 	
+	div#graphcontainer{
+		zoom: 200%;
+	}
+	
 	input#frommap{
 		zoom: 200%;
 	}
 	
 	label#iscoeff{
+		margin-top:10%;
 		zoom: 200%;
 	}
 }
@@ -82,7 +87,7 @@ img#github{
 	 border-radius: 1em;
     -moz-border-radius: 1em;
     -webkit-border-radius: 1em;
-	margin: 2.5% 5% 5% 5%;
+	margin: 2.5% 5% 2.5% 5%;
 }
 
 .infocategory h1{
