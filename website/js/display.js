@@ -1,11 +1,11 @@
 ﻿var _lang = 'en';
 var _isCoeffComputed = false;
 
+
+
 $(document).ready(function () {
-	var cw = $('#graphcontainer').parent().width();
-	var usedWidth = Math.round((cw*80)/100); //80 percent of the parent.
-	var usedHeight = Math.round(usedWidth/2);
-	$('#graphcontainer').css({"width":usedWidth+"px","height":usedHeight+'px'});
+	
+	SetGraphContainerSize();
 	
 	ComputeAmGraph();
     $("#compute").click(function () {
@@ -26,6 +26,22 @@ $(document).ready(function () {
         LocalizePage();
     });
     LocalizePage();
+});
+
+function SetGraphContainerSize(){
+	var cw = $('#graphcontainer').parent().width();
+	var usedWidth = Math.round((cw*90)/100); //90 percent of the parent.
+	var usedHeight = Math.round(usedWidth/2);
+	$('#graphcontainer').css({"width":usedWidth+"px","height":usedHeight+'px'});
+}
+
+var zoom = document.documentElement.clientWidth / window.innerWidth;
+
+$(window).resize(function() {
+    var zoomNew = document.documentElement.clientWidth / window.innerWidth;
+    if (zoom != zoomNew) {
+        SetGraphContainerSize();
+    }
 });
 
 function ComputeAmGraph(){
