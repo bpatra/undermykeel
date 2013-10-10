@@ -52,18 +52,22 @@ div#mainpane{
 	}
 	
 	div#graphcontainer{
-		zoom: 200%;
+		font-size: 200%;
 	}
 	
 	input#frommap{
-		zoom: 200%;
+		margin-top:5%;
+		zoom: 300%;
 	}
 	
+		
 	label#iscoeff{
 		margin-top:10%;
-		zoom: 200%;
+		zoom: 300%;
 	}
 }
+
+
 
 
 div#graphcontainer{
