@@ -101,14 +101,14 @@ function ComputeGraphData() {
     var isEbb = isEbbTide(highTideTime, lowTideTime);
     var D = isEbb ? smartDuration(highTideTime ,lowTideTime) : smartDuration(lowTideTime, highTideTime);
     var data = [];
-    var start = isEbb ? highTideTime : lowTideTime;
+    var start = isEbb ? highTideTime : lowTideTime;//ebb -> descendante...
 	
 	var h0 =0;
 	if(_isCoeffComputed){
-		h0 = -h0FromReferenceTide(D, M)//-1 temporary hack
+		h0 = h0FromReferenceTide(D, M)
 	}
     else{
-		h0 = h0FromLocalPoint(D, M, start);
+		h0 = h0FromLocalPoint(D, M, start, isEbb);
 	}
 	
     var delta = devPressure();
@@ -116,8 +116,15 @@ function ComputeGraphData() {
 	var N = 80;
     for (var i = 0; i < N; i++) {
         var t1 = i * D / N;
-        var t2 = start + t1 - lowTideTime;
-        data.push({ T: floatToTime(start + t1), H: hFromt(D, M, t2) - h0 - delta });
+        var t2 = smartDuration(start ,start + t1);
+		if(isEbb)
+		{
+			data.push({ T: floatToTime(start + t1), H: h0 - hFromt(D, M, t2)  - delta });
+		}
+		else
+		{
+			data.push({ T: floatToTime(start + t1), H:  h0 + hFromt(D, M, t2) - delta });
+		}
     }
 
    return data;
@@ -152,7 +159,7 @@ function devPressure() {
     return delta / 100;
 }
 
-function h0FromLocalPoint(D, M, start) {
+function h0FromLocalPoint(D, M, start, isEbb) {
     var localPointTime = timeToFloat($("#onepoint_time").val());
     var localPointValue = parseFloat($("#onepoint_value").val());
     if (isNaN(localPointTime)) {
@@ -161,7 +168,14 @@ function h0FromLocalPoint(D, M, start) {
     if (isNaN(localPointValue)) {
         alert(localizedErrors.InvalidPointDataValue[_lang]);
     }
-    return hFromt(D, M, localPointTime - start) - localPointValue;
+	
+	//h0 + hFromt = localPointValue if flow
+	//h0 - hFromt = localPointValue if ebb
+	if(isEbb){
+		return localPointValue + hFromt(D, M, smartDuration(start,localPointTime));
+	}
+	
+    return localPointValue- hFromt(D, M, smartDuration(start,localPointTime));
 }
 
 function ValidCoeff(coeff){
