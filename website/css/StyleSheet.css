@@ -27,6 +27,40 @@ div#mainpane{
 	margin: 2.5% 0% 0% 0%;
 }
 
+@media all and (max-device-width: 480px)
+{
+    menu {
+		width:100%;
+		float:none;
+	}
+	select#languageselector{
+		float:left;
+		zoom:200%
+	}
+	.infocategory{
+		zoom:200%;
+	}
+	
+	div#mainpane{
+		width:100%;
+		float:none;
+		margin: 2.5% 0% 0% 0%;
+	}
+	
+	input[type="button"]{
+		zoom: 200%;
+	}
+	
+	input#frommap{
+		zoom: 200%;
+	}
+	
+	label#iscoeff{
+		zoom: 200%;
+	}
+}
+
+
 div#graphcontainer{
  /*jQuery width and height populated*/
 	padding: 2px 2px 2px 2px;
@@ -48,9 +82,6 @@ img#github{
 	 border-radius: 1em;
     -moz-border-radius: 1em;
     -webkit-border-radius: 1em;
-}
-
-.infocategory{
 	margin: 2.5% 5% 5% 5%;
 }
 
