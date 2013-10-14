@@ -27,49 +27,6 @@ div#mainpane{
 	margin: 2.5% 0% 0% 0%;
 }
 
-@media all and (max-device-width: 480px)
-{
-    menu {
-		width:100%;
-		float:none;
-	}
-	select#languageselector{
-		float:left;
-		zoom:200%
-	}
-	.infocategory{
-		zoom:200%;
-	}
-	
-	div#mainpane{
-		width:100%;
-		float:none;
-		margin: 2.5% 0% 0% 0%;
-	}
-	
-	input[type="button"]{
-		zoom: 200%;
-	}
-	
-	div#graphcontainer{
-		font-size: 200%;
-	}
-	
-	input#frommap{
-		margin-top:5%;
-		zoom: 300%;
-	}
-	
-		
-	label#iscoeff{
-		margin-top:10%;
-		zoom: 300%;
-	}
-}
-
-
-
-
 div#graphcontainer{
  /*jQuery width and height populated*/
 	padding: 2px 2px 2px 2px;

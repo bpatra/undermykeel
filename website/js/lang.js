@@ -119,7 +119,12 @@ var localizedErrors = {
 	 InvalidCoefficient: {
         'en': 'Invalid tide coefficient (must be a number between 30 and 150).',
         'fr': "Coefficient de marée invalide (doit être un nombre entre 30 et 150)."
-    }
+    },
+	
+	PortraitNotSupported:{
+		'en': 'Portrait mode is not recommended, resize your window or turn your device and reload the page',
+		'fr' : "Le mode portrait n'est pas recommandé, redimensionez votre fenêtre ou tournez votre appareil et rechargez la page"
+	}
 
 };
 

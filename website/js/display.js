@@ -4,7 +4,7 @@ var _isCoeffComputed = false;
 
 
 $(document).ready(function () {
-	
+	DisplayInvalidPortrait();
 	SetGraphContainerSize();
 	
 	ComputeAmGraph();
@@ -31,15 +31,23 @@ $(document).ready(function () {
 function SetGraphContainerSize(){
 	var cw = $('#graphcontainer').parent().width();
 	var usedWidth = Math.round((cw*95)/100); //90 percent of the parent.
-	var ratio = Math.min(window.innerHeight/window.innerWidth,1.5);
+	var ratio = 0.45;
 	var usedHeight = Math.round(usedWidth*ratio);
 	$('#graphcontainer').css({"width":usedWidth+"px","height":usedHeight+'px'});
 }
 
-var zoom = document.documentElement.clientWidth / window.innerWidth;
+function DisplayInvalidPortrait(){
+	if(window.innerHeight > window.innerWidth)	{
+		$("#portraitnotsupported").toggle();
+		$("#mainpane").toggle();
+		$("#mainmenu").toggle();
+	}
+}
+
 
 $(window).resize(function() {
-        SetGraphContainerSize();
+	DisplayInvalidPortrait()
+	SetGraphContainerSize();
 });
 
 function ComputeAmGraph(){
@@ -269,4 +277,5 @@ function LocalizePage() {
 	$("#iscoeff").text(localizedStrings.CoeffCheckBox[_lang]);
 	$("#localcoeff").children().eq(0).text(localizedStrings.Coeffs[_lang]);
 	$("#tidalcoeff").children().eq(0).text(localizedStrings.Coeffs[_lang]);
+	$("#portraitnotsupported").text(localizedErrors.PortraitNotSupported[_lang]);
 };
