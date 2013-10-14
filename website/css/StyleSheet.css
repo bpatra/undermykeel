@@ -27,7 +27,7 @@ div#mainpane{
 	margin: 2.5% 0% 0% 0%;
 }
 
-@media all and (max-width: 480px)
+@media all and (max-device-width: 480px)
 {
     menu {
 		width:100%;
