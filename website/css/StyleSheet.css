@@ -19,6 +19,7 @@ body
 menu {
     width:29%;
 	float:left;
+	margin : 0.5% 0% 0% 0%
 }
 
 div#portraitnotsupported{
@@ -59,6 +60,7 @@ img#github{
 	text-align:left;
 	font-weight: bold;
 	color:#dae2ed;
+	font-size:110%
 }
 
 .datainput{
@@ -67,7 +69,9 @@ img#github{
 
 .datainput h1{
 	text-align:center;
-	font-weight:normal;	
+	font-weight:normal;
+	margin : 2% 1% 1% 1%;
+	font-size:110%;
 }
 
 .datainput input,select,label {
@@ -75,6 +79,7 @@ img#github{
     -moz-border-radius: 0.5em;
     -webkit-border-radius: 0.5em;
 	color:#233852;
+	zoom:130%;
 }
 
 input[type="button"]
