@@ -122,8 +122,8 @@ var localizedErrors = {
     },
 	
 	PortraitNotSupported:{
-		'en': 'Portrait mode is not recommended, resize your window or turn your device and reload the page',
-		'fr' : "Le mode portrait n'est pas recommandé, redimensionez votre fenêtre ou tournez votre appareil et rechargez la page"
+		'en': 'Display in portrait mode is not supported, resize your window or turn your device and reload the page',
+		'fr' : "L'affichage en mode portrait n'est pas supporté, redimensionez votre fenêtre ou tournez votre appareil et rechargez la page"
 	}
 
 };

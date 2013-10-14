@@ -21,6 +21,10 @@ menu {
 	float:left;
 }
 
+div#portraitnotsupported{
+	zoom:200%;
+}
+
 div#mainpane{
 	width:70%;
 	float:left;
