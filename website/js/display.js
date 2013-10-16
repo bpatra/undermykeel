@@ -13,7 +13,7 @@ $(document).ready(function () {
         $("#input").toggle('slow');
     });
 	
-	$("#frommap").click( function(){
+	$("#slideTwo").click( function(){
 		_isCoeffComputed = $(this).is(':checked');
 		$("#tidalcoeff").toggle('slow');
 		$("#localcoeff").toggle('slow');

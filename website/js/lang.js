@@ -42,18 +42,18 @@
     },
 	
 	TideParameters:{
-        'en':'Tide parameters',
-        'fr':'Paramètres de la marée'
+        'en':'Parameters for the current tide',
+        'fr':'Paramètres de la marée en cours'
     },
 	
 	LocalData:{
-        'en':'Local data',
-        'fr':'Données du lieu'
+        'en':'Local data for the current tide',
+        'fr':'Données du lieu pour la marée en cours'
     },
 	
 	LocalDataRef:{
-        'en':'Local data for reference tide',
-        'fr':'Données du lieu pour la marée de référence'
+        'en':'Local data for a reference tide',
+        'fr':'Données du lieu pour une marée de référence'
     },
 	
 	LocalTime:{
