@@ -63,7 +63,7 @@
 	
 	LocalDepth:{
 		'en':'Depth',
-		'fr':'Profondeur'
+		'fr':'Hauteur d\'eau'
 	},
 	
 	CoeffCheckBox:{
@@ -78,7 +78,7 @@
 	
 	DepthAtLowTide:{
 		'en':'Depth at low tide',
-		'fr':'Profondeur à basse mer '
+		'fr':"Hauteur d'eau à basse mer"
 	}
 };
 
