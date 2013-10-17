@@ -59,7 +59,7 @@ function ComputeAmGraph(){
 			chart.pathToImages = "./js/images/";
 			chart.dataProvider = chartData;
 			chart.categoryField = "T";
-			chart.numberFormatter = {precision:2, decimalSeparator:'.', thousandsSeparator:','};
+			chart.numberFormatter = {precision:1, decimalSeparator:'.', thousandsSeparator:','};
 			chart.marginRight = 10;
 
 			// AXES
@@ -122,16 +122,30 @@ function ComputeGraphData() {
     var delta = devPressure();
 	
 	var N = 80;
+	var previousHour = -1;
+	var day = 12;
     for (var i = 0; i < N; i++) {
         var t1 = i * D / N;
         var t2 = smartDuration(start ,start + t1);
-		if(isEbb)
-		{
-			data.push({ T: floatToTime(start + t1), H: h0 - hFromt(D, M, t2)  - delta });
+		
+		var value =start+t1;
+		
+		var hour = Math.floor(value).mod(24);
+		var minutes = Math.floor((value - Math.floor(value)) * 60);
+		var date;
+		if(previousHour != -1 && hour < previousHour){
+			var day = day+1; //change day if tide is astrid on two day.
+			previousHour = -1;
 		}
-		else
-		{
-			data.push({ T: floatToTime(start + t1), H:  h0 + hFromt(D, M, t2) - delta });
+		
+		var date =  new Date(1998,07,day,hour, minutes);
+		previousHour = hour;
+		 
+		if(isEbb){
+			data.push({ T: date, H: h0 - hFromt(D, M, t2)  - delta });
+		}
+		else{
+			data.push({ T: date, H:  h0 + hFromt(D, M, t2) - delta });
 		}
     }
 
