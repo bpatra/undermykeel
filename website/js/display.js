@@ -113,7 +113,7 @@ function ComputeGraphData() {
 	
 	var h0 =0;
 	if(_isCoeffComputed){
-		h0 = h0FromReferenceTide(D, M)
+		h0 = h0FromReferenceTide(D, M, isEbb)
 	}
     else{
 		h0 = h0FromLocalPoint(D, M, start, isEbb);
@@ -207,7 +207,7 @@ function ValidCoeff(coeff){
 	return coeff >= 30 && coeff <= 150;
 }
 
-function h0FromReferenceTide(D, M) {
+function h0FromReferenceTide(D, M, isEbb) {
     var localCoeff = parseFloat($("#localcoeff_value").val());
     var tideCoeff = parseFloat($("#tidalcoeff_value").val());
 	var localPointValue = parseFloat($("#onepoint_value").val());
@@ -219,14 +219,12 @@ function h0FromReferenceTide(D, M) {
         alert(localizedErrors.InvalidPointDataValue[_lang]);
     }
 	
-    return M*(localCoeff - tideCoeff)/200.0 + localPointValue;
-}
-
-function floatToTime(value) {
-    var hours = Math.floor(value).mod(24);
-    var minutes = Math.floor((value - Math.floor(value)) * 60);
-
-    return  new Date(1998,07,12,hours, minutes);
+    var depth = M*(localCoeff - tideCoeff)/200.0 + localPointValue;
+	
+	if(isEbb){
+		return depth + M;
+	}
+	return depth;
 }
 
 function timeToFloat(timeString) {
